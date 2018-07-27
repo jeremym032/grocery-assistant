@@ -1,0 +1,68 @@
+<div>
+    <h2 id="page-heading">
+        <span>Store Grocery Items</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-store-grocery-item" [routerLink]="['/store-grocery-item/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Store Grocery Item
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="storeGroceryItems">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Price</span></th>
+            <th><span>Favorite Ind</span></th>
+            <th><span>Store</span></th>
+            <th><span>Item</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let storeGroceryItem of storeGroceryItems ;trackBy: trackId">
+                <td><a [routerLink]="['/store-grocery-item', storeGroceryItem.id, 'view' ]">{{storeGroceryItem.id}}</a></td>
+                <td>{{storeGroceryItem.price}}</td>
+                <td>{{storeGroceryItem.favoriteInd}}</td>
+                <td>
+                    <div *ngIf="storeGroceryItem.store">
+                        <a [routerLink]="['../store', storeGroceryItem.store?.id, 'view' ]" >{{storeGroceryItem.store?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="storeGroceryItem.item">
+                        <a [routerLink]="['../item', storeGroceryItem.item?.id, 'view' ]" >{{storeGroceryItem.item?.name}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/store-grocery-item', storeGroceryItem.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/store-grocery-item', storeGroceryItem.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'store-grocery-item/'+ storeGroceryItem.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

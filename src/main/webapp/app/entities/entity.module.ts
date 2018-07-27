@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { GroceryAssistantStoreModule } from './store/store.module';
 import { GroceryAssistantGroceryItemModule } from './grocery-item/grocery-item.module';
+import { GroceryAssistantStoreGroceryItemModule } from './store-grocery-item/store-grocery-item.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -9,6 +10,7 @@ import { GroceryAssistantGroceryItemModule } from './grocery-item/grocery-item.m
     imports: [
         GroceryAssistantStoreModule,
         GroceryAssistantGroceryItemModule,
+        GroceryAssistantStoreGroceryItemModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],
