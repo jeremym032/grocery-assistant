@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="groceryItem">
+            <h2><span>Grocery Item</span> {{groceryItem.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{groceryItem.name}}</span>
+                </dd>
+                <dt><span>Size</span></dt>
+                <dd>
+                    <span>{{groceryItem.size}}</span>
+                </dd>
+                <dt><span>Unit Of Measurement</span></dt>
+                <dd>
+                    <span>{{groceryItem.unitOfMeasurement}}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{groceryItem.description}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/grocery-item', groceryItem.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
